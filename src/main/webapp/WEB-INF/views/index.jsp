@@ -10,7 +10,7 @@
   <div class="card m-2">
     <div class="card-body">
       <h4 class="card-title"> ✏️ " ${board.title} "️ </h4>
-      <a href="#" class="btn btn-light btn-block btn-outline-light"> 📖 </a>
+      <a href="/board/${board.id}" class="btn btn-light btn-block btn-outline-light"> details </a>
     </div>
   </div>
 

@@ -31,8 +31,23 @@ public class BoardService {
 
     }
 
-
+    @Transactional(readOnly = true)
     public Page<Board> boardList (Pageable pageable) {
         return boardRepository.findAll(pageable);
     }
+
+    @Transactional(readOnly = true)
+    public Board boardDetail (int id) {
+        return boardRepository.findById(id)
+                        .orElseThrow(() -> {
+                        return new IllegalArgumentException(" 게시글 상세보기 실패 : 작성자를 찾을 수 없습니다 ");
+                });
+    }
+
+    public void boardDelete (int id) {
+
+        boardRepository.deleteById(id);
+
+    }
+
 }

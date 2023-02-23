@@ -14,7 +14,6 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 @Entity
-
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,6 +1,7 @@
 package com.blogMaven.controller;
 
 import com.blogMaven.config.auth.PrincipalDetail;
+import com.blogMaven.model.Board;
 import com.blogMaven.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +11,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class BoardController {
@@ -24,6 +26,12 @@ public class BoardController {
         return "index"; // viewResolver 작동
     }
 
+    @GetMapping("/board/{id}")
+    public String findByid(@PathVariable int id, Model model){
+
+        model.addAttribute("board", boardService.boardDetail(id));
+        return "board/detail";
+    }
     // USER 권한 필요
     @GetMapping("/board/saveForm")
     public String saveForm(){
