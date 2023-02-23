@@ -1,17 +1,13 @@
 package com.blogMaven.controller.api;
 
 import com.blogMaven.dto.ResponseDto;
-import com.blogMaven.model.RoleType;
 import com.blogMaven.model.User;
 import com.blogMaven.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpSession;
 
 @RestController
 public class UserApiController {

@@ -2,7 +2,6 @@ package com.blogMaven.repository;
 
 import com.blogMaven.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 

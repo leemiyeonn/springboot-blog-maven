@@ -43,10 +43,10 @@
   <c:otherwise>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="/board/form"> write </a>
+        <a class="nav-link" href="/board/saveForm"> write </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/user/form"> info </a>
+        <a class="nav-link" href="/user/updateForm"> info </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/logout"> logout </a>
