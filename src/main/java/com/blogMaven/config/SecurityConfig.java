@@ -1,6 +1,6 @@
 package com.blogMaven.config;
 
-import com.blogMaven.config.auth.PricipalDetailService;
+import com.blogMaven.config.auth.PrincipalDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.security.ConditionalOnDefaultWebSecurity;
@@ -22,14 +22,14 @@ import org.springframework.security.web.SecurityFilterChain;
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class SecurityConfig {
     @Autowired
-    private PricipalDetailService pricipalDetailService;
+    private PrincipalDetailService principalDetailService;
     @Bean
     public BCryptPasswordEncoder encoderPWD() {
         return new BCryptPasswordEncoder();
     }
 
     protected void cofigure (AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(pricipalDetailService).passwordEncoder(encoderPWD());
+        auth.userDetailsService(principalDetailService).passwordEncoder(encoderPWD());
     }
 
     @Bean

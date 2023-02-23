@@ -13,7 +13,7 @@ public class BoardController {
         // /WEB-INF/views/index.jsp
         return "index";
     }
-
+    // USER 권한 필요
     @GetMapping("/board/saveForm")
     public String saveForm(){
         return "board/saveForm";

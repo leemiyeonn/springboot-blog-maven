@@ -7,25 +7,22 @@
 
   <div class="card m-2">
     <div class="card-body">
-      <h4 class="card-title"> title </h4>
-      <p class="card-text"> content </p>
-      <a href="#" class="btn btn-primary"> detail </a>
+      <h4 class="card-title"> ✏️ TITLE ️ </h4>
+      <a href="#" class="btn btn-light btn-block btn-outline-light"> 📖 </a>
     </div>
   </div>
 
   <div class="card m-2">
     <div class="card-body">
-      <h4 class="card-title"> title </h4>
-      <p class="card-text"> content </p>
-      <a href="#" class="btn btn-primary"> detail </a>
+      <h4 class="card-title"> ✏️ TITLE ️ </h4>
+      <a href="#" class="btn btn-light btn-block btn-outline-light"> 📖 </a>
     </div>
   </div>
 
   <div class="card m-2">
     <div class="card-body">
-      <h4 class="card-title"> title </h4>
-      <p class="card-text"> content </p>
-      <a href="#" class="btn btn-primary"> detail </a>
+      <h4 class="card-title"> ✏️ TITLE ️ </h4>
+      <a href="#" class="btn btn-light btn-block btn-outline-light"> 📖 </a>
     </div>
   </div>
 
