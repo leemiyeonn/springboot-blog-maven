@@ -11,6 +11,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
@@ -36,6 +37,15 @@ public class BoardController {
     @GetMapping("/board/saveForm")
     public String saveForm(){
         return "board/saveForm";
+    }
+
+
+    @GetMapping("/board/{id}/updateForm")
+    public String updateForm(@PathVariable int id, Model model){
+        // model - 들어온 데이터를 가지고 뷰까지 이동
+        model.addAttribute("board",boardService.boardDetail(id));
+        return "board/updateForm";
+        // jsp 호출
     }
 
 

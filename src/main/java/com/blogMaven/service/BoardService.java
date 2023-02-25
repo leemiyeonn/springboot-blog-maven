@@ -44,10 +44,23 @@ public class BoardService {
                 });
     }
 
+    @Transactional
     public void boardDelete (int id) {
 
         boardRepository.deleteById(id);
 
+    }
+
+    @Transactional
+    public void edit (int id, Board requestBoard) {
+        Board board = boardRepository.findById(id)
+                .orElseThrow(() -> {
+                    return new IllegalArgumentException(" 게시글 수정 실패 : 게시글을 찾을 수 없습니다 ");
+                }); // 영속화
+
+        board.setTitle(requestBoard.getTitle());
+        board.setContent(requestBoard.getContent());
+        // 해당 함수 종료시 (service 종료) 트랜잭션 종료 , 이때 더티체킹 - 자동 업데이트 db flush (commit)
     }
 
 }
