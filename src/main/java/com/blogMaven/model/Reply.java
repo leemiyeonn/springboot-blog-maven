@@ -1,5 +1,6 @@
 package com.blogMaven.model;
 
+import com.blogMaven.dto.ReplyRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,5 +33,11 @@ import java.sql.Timestamp;
 
         @CreationTimestamp
         private Timestamp createDate;
+
+        public void update(User user, Board board, String content){
+            setUser(user);
+            setBoard(board);
+            setContent(content);
+        }
     }
 

@@ -1,5 +1,6 @@
 package com.blogMaven.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,10 +35,12 @@ public class Board {
     private User user; // db : object 저장 불가능 - fk 사용 / jpa : object 저장 가능 , user 객체 참조
 
     @OneToMany(mappedBy = "board" , fetch = FetchType.EAGER)
+    @JsonIgnoreProperties({"board"}) // 무한참조 방지 - Board 통해서 Reply 참조할때 reply.board 무시한다
+    @OrderBy("id desc")
     // FetchType.EAGER 모든 데이터 불러온다 , FetchType.Lazy 필요할 때 데이터 불러온다
     //( mappedBy = "field" )- 연관관계의 주인 x (fk x) , db에 column 생성 x , Reply table 의 board = fk
     //          - select board 할 때 join reply
-    private List<Reply> reply;
+    private List<Reply> replies;
 
     @CreationTimestamp
     private Timestamp createDate;

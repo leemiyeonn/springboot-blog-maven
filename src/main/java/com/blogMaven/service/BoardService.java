@@ -1,10 +1,13 @@
 package com.blogMaven.service;
 
 import com.blogMaven.config.auth.PrincipalDetail;
+import com.blogMaven.dto.ReplyRequestDto;
 import com.blogMaven.model.Board;
+import com.blogMaven.model.Reply;
 import com.blogMaven.model.RoleType;
 import com.blogMaven.model.User;
 import com.blogMaven.repository.BoardRepository;
+import com.blogMaven.repository.ReplyRepository;
 import com.blogMaven.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,6 +24,12 @@ public class BoardService {
 
     @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private ReplyRepository replyRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Transactional
     public void write (Board board, User user) { // title , content
@@ -63,4 +72,24 @@ public class BoardService {
         // 해당 함수 종료시 (service 종료) 트랜잭션 종료 , 이때 더티체킹 - 자동 업데이트 db flush (commit)
     }
 
+    @Transactional
+    public void writeReply(ReplyRequestDto replyRequestDto) {
+
+        User user = userRepository.findById(replyRequestDto.getUserId())
+                .orElseThrow(() -> {
+                    return new IllegalArgumentException(" 댓글 작성 실패 : 작성자를 찾을 수 없습니다 ");
+                });
+
+        Board board = boardRepository.findById(replyRequestDto.getBoardId())
+                .orElseThrow(() -> {
+                    return new IllegalArgumentException(" 댓글 작성 실패 : 게시글을 찾을 수 없습니다 ");
+                });
+
+        Reply reply = Reply.builder().user(user).board(board).content(replyRequestDto.getContent()).build();
+
+        //        Reply reply = new Reply();
+        //        reply.update(user, board, replyRequestDto.getContent());
+
+        replyRepository.save(reply);
+    }
 }

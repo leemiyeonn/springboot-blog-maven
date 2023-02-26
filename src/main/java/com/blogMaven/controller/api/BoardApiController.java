@@ -1,8 +1,10 @@
 package com.blogMaven.controller.api;
 
 import com.blogMaven.config.auth.PrincipalDetail;
+import com.blogMaven.dto.ReplyRequestDto;
 import com.blogMaven.dto.ResponseDto;
 import com.blogMaven.model.Board;
+import com.blogMaven.model.Reply;
 import com.blogMaven.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,6 +39,16 @@ public class BoardApiController {
                                         @RequestBody Board board){
 
         boardService.edit(id, board);
+
+        return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+    }
+
+
+    @PostMapping("/api/board/{boardId}/reply")
+    public ResponseDto<Integer> replySave (@PathVariable int boardId,
+                                           @RequestBody ReplyRequestDto reply){
+
+        boardService.writeReply(reply);
 
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
     }
