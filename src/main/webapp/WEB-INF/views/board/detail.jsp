@@ -49,7 +49,7 @@
         <br/>
 
         <div class="card">
-                <div class="card-header"> list </div>
+                <div class="card-header"> comment list </div>
                 <ul id="reply-box" class="list-group">
                     <c:forEach var="reply" items="${board.replies}">
 
