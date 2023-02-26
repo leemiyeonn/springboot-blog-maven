@@ -75,21 +75,7 @@ public class BoardService {
     @Transactional
     public void writeReply(ReplyRequestDto replyRequestDto) {
 
-        User user = userRepository.findById(replyRequestDto.getUserId())
-                .orElseThrow(() -> {
-                    return new IllegalArgumentException(" 댓글 작성 실패 : 작성자를 찾을 수 없습니다 ");
-                });
+        replyRepository.replySave(replyRequestDto.getUserId(), replyRequestDto.getBoardId(), replyRequestDto.getContent());
 
-        Board board = boardRepository.findById(replyRequestDto.getBoardId())
-                .orElseThrow(() -> {
-                    return new IllegalArgumentException(" 댓글 작성 실패 : 게시글을 찾을 수 없습니다 ");
-                });
-
-//        Reply reply = Reply.builder().user(user).board(board).content(replyRequestDto.getContent()).build();
-
-        Reply reply = new Reply();
-        reply.update(user, board, replyRequestDto.getContent());
-
-        replyRepository.save(reply);
     }
 }
