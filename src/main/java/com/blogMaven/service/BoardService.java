@@ -85,10 +85,10 @@ public class BoardService {
                     return new IllegalArgumentException(" 댓글 작성 실패 : 게시글을 찾을 수 없습니다 ");
                 });
 
-        Reply reply = Reply.builder().user(user).board(board).content(replyRequestDto.getContent()).build();
+//        Reply reply = Reply.builder().user(user).board(board).content(replyRequestDto.getContent()).build();
 
-        //        Reply reply = new Reply();
-        //        reply.update(user, board, replyRequestDto.getContent());
+        Reply reply = new Reply();
+        reply.update(user, board, replyRequestDto.getContent());
 
         replyRepository.save(reply);
     }
