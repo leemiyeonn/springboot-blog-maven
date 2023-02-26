@@ -112,6 +112,23 @@ let index={
 
         },
 
+        replyDelete:function(boardId,replyId) {
+
+            $.ajax({
+                type:"DELETE",
+                url:`/api/board/${boardId}/reply/${replyId}`,
+                dataType:"json"
+            }).done(function(resp){
+                alert(" 댓글 삭제가 완료되었습니다. 🙌 ");
+                location.href=`/board/${boardId}`;
+            }).fail(function(error){
+                alert(JSON.stringify(error));
+            });
+
+        },
+
+
+
 }
 
 index.init();

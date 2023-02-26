@@ -34,7 +34,7 @@ public class Board {
     @JoinColumn(name="userId")
     private User user; // db : object 저장 불가능 - fk 사용 / jpa : object 저장 가능 , user 객체 참조
 
-    @OneToMany(mappedBy = "board" , fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "board" , fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties({"board"}) // 무한참조 방지 - Board 통해서 Reply 참조할때 reply.board 무시한다
     @OrderBy("id desc")
     // FetchType.EAGER 모든 데이터 불러온다 , FetchType.Lazy 필요할 때 데이터 불러온다
