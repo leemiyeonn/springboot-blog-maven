@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Data
@@ -14,12 +15,12 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 @Entity
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false , length = 30 , unique = true)
+    @Column(nullable = false , length = 100 , unique = true)
     private String username;
 
     @Column(nullable = false , length = 100)

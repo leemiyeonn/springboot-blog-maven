@@ -52,4 +52,13 @@ public class UserService {
     // edit 함수 종료시 = userService 종료시 = 트랜잭션 종료 = commit
     // 영속화된 persistance 객체 변화 감지 - 더티체킹 - db에 update
 
+    @Transactional(readOnly = true)
+    public User findUser(String username) {
+
+        User user = userRepository.findByUsername(username).orElseGet(
+                () -> {return new User();});
+
+        return user;
+    }
+
 }
