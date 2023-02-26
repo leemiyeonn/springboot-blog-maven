@@ -9,14 +9,28 @@
           <label for="username"> username : </label>
           <input type="text" value="${principal.user.username}" class="form-control" id="username" placeholder="Enter username" name="username" readonly>
         </div>
-        <div class="form-group">
-          <label for="password"> password : </label>
-          <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" autocomplete="off">
-        </div>
-        <div class="form-group">
+
+        <c:choose>
+        <c:when test="${empty principal.user.oauth}">
+            <div class="form-group">
+              <label for="password"> password : </label>
+              <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+              <label for="email"> email : </label>
+              <input type="email" value="${principal.user.email}" class="form-control" id="email" placeholder="Enter email" name="email">
+            </div>
+        </c:when>
+
+        <c:otherwise>
+          <div class="form-group">
           <label for="email"> email : </label>
-          <input type="email" value="${principal.user.email}" class="form-control" id="email" placeholder="Enter email" name="email">
-        </div>
+          <input type="email" value="${principal.user.email}" class="form-control" id="email" placeholder="Enter email" name="email" readonly>
+          </div>
+        </c:otherwise>
+        </c:choose>
+
       </form>
         <button id="btn-update" class="btn btn-primary" title="save"> submit </button>
 </div>

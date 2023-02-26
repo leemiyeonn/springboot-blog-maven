@@ -147,6 +147,7 @@ public class UserController {
                 .username(kakaoProfile.getKakao_account().getEmail()+"_"+kakaoProfile.getId())
                 .email(kakaoProfile.getKakao_account().getEmail())
                 .password(cosKey)
+                .oauth("kakao")
                 .build();
 
 

@@ -41,11 +41,15 @@ public class UserService {
                 ()->{return new IllegalArgumentException(" 회원 조회 실패 ");}
         ); // 영속화 -> 영속화된 user 를 수정
 
-        String rawPassword = user.getPassword();
-        String encPassword = encoder.encode(rawPassword); // 암호화한 password
+        // Validate oauth 로그인 사용자 - 회원 정보 수정 불가능
+        if (persistance.getOauth() == null || persistance.getOauth().equals("")){
+            String rawPassword = user.getPassword();
+            String encPassword = encoder.encode(rawPassword); // 암호화한 password
+            persistance.setPassword(encPassword);
 
-        persistance.setPassword(encPassword);
-        persistance.setEmail(user.getEmail());
+            persistance.setEmail(user.getEmail());
+        }
+
 
     }
 

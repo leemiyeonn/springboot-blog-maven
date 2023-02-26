@@ -34,6 +34,9 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private RoleType role;
 
+    private String oauth; // kakao 로그인
+
+    // 직접 시간 넣으려면 , Timestamp.valueOf(LocalDateTime.now())
     @CreationTimestamp
     private Timestamp createDate;
 }
