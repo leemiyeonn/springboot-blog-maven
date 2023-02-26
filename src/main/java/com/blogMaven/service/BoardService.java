@@ -9,6 +9,7 @@ import com.blogMaven.model.User;
 import com.blogMaven.repository.BoardRepository;
 import com.blogMaven.repository.ReplyRepository;
 import com.blogMaven.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,16 +21,11 @@ import java.util.List;
 
 
 @Service
+@RequiredArgsConstructor // 초기화 필수인 필드(?)를 (final) 생성자 호출 할 때 파라미터에 넣어서 초기화
 public class BoardService {
 
-    @Autowired
-    private BoardRepository boardRepository;
-
-    @Autowired
-    private ReplyRepository replyRepository;
-
-    @Autowired
-    private UserRepository userRepository;
+    private final BoardRepository boardRepository; // final 초기화 필수
+    private final ReplyRepository replyRepository;
 
     @Transactional
     public void write (Board board, User user) { // title , content
